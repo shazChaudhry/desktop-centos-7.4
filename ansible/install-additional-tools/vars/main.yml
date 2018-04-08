@@ -1,0 +1,6 @@
+---
+# vars file for ansible/install-additional-tools
+tools_list:
+  - git
+  - java-1.8.0-openjdk
+  - java-1.8.0-openjdk-devel

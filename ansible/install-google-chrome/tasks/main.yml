@@ -1,0 +1,13 @@
+---
+# tasks file for ansible/install-google-chrome
+- name: Create google-chrome yum repo
+  yum_repository:
+    name: google-chrome
+    description: Google Editor
+    baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
+    gpgcheck: yes
+    gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+
+- name: Installing Google Chrome
+  yum:
+    name: google-chrome-stable

@@ -1,0 +1,7 @@
+---
+# tasks file for ansible/install-additional-tools
+- name: Install Git and JDK
+  yum:
+    name={{ item }}
+    state=latest
+  with_items: "{{ tools_list }}"

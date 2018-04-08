@@ -1,0 +1,4 @@
+---
+# vars file for ansible/install-terraform
+
+terraform_version: 0.11.6

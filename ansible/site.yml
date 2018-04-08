@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  become: yes
+  roles:
+    - install-additional-tools
+    - install-terraform
+    - install-google-chrome
+    - install-atom-editor
+    - install-atom-packages
+    - install-eclipse

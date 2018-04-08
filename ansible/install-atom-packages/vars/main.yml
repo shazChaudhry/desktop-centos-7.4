@@ -1,0 +1,25 @@
+---
+# vars file for atom-packages
+atom_packages:
+  - atom-ide-ui
+  - file-icons
+  - autocomplete-ansible
+  - autocomplete-java
+  - autocomplete-xml
+  - busy-signal
+  - git-log
+  - intentions
+  - java-generator
+  - language-docker
+  - language-ansible
+  - linter
+  - linter-ansible-linting
+  - linter-docker
+  - language-markdown
+  - language-terraform
+  - linter-markdown
+  - linter-terraform-syntax
+  - linter-ui-default
+  - linter-vagrant-validate
+  - markdown-preview-plus
+  - xml-formatter

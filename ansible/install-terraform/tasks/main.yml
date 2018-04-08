@@ -1,0 +1,10 @@
+---
+# tasks file for ansible/install-terraform
+- name: Downloading and installing terraform "{{ terraform_version }}"
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    dest: /usr/local/bin/
+    owner: "vagrant"
+    group: "vagrant"
+    mode: u+rx
+    remote_src: yes

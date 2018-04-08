@@ -1,0 +1,23 @@
+---
+# tasks file for ansible/install-eclipse
+- name: Create eclipse directory
+  file:
+    path: /usr/bin/eclipse
+    state: directory
+
+- name: Downloading and Installing Eclipse Oxygen
+  unarchive:
+    src: http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/3/eclipse-java-oxygen-3-linux-gtk-x86_64.tar.gz
+    dest: /usr/bin/
+    owner: "vagrant"
+    group: "vagrant"
+    mode: u+rx
+    remote_src: yes
+
+- name: Create eclipse shortcut
+  copy:
+    src: desktop_sortcut
+    dest: /usr/share/applications/eclipse-4.7.desktop
+    owner: "vagrant"
+    group: "vagrant"
+    mode: u+rx
