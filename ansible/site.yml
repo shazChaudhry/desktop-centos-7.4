@@ -8,4 +8,4 @@
     - install-google-chrome
     - install-atom-editor
     - install-atom-packages
-    - install-eclipse
+    # - install-eclipse

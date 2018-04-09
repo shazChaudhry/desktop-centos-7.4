@@ -1,28 +1,14 @@
 ---
 
-- name: Adds a gpg key from the rpm db
-  rpm_key:
-    state: present
-    key: https://packagecloud.io/AtomEditor/atom/gpgkey
-
 - name: Create Atom yum repo
   yum_repository:
-    name: atom
-    description: Atom Editor repo
     baseurl: https://packagecloud.io/AtomEditor/atom/el/7/x86_64
+    description: Atom Editor repo
     gpgcheck: no
     gpgkey: https://packagecloud.io/AtomEditor/atom/gpgkey
+    name: atom
     repo_gpgcheck: yes
-    enabled: yes
-    # group: "vagrant"
-    # owner: "vagrant"
-    # mode: u+rx
-    state: present
 
 - name: Install Atom
   yum:
     name: atom
-
-- name: Install Atom Beta
-  yum:
-    name: atom-beta
