@@ -5,3 +5,8 @@
     name={{ item }}
     state=latest
   with_items: "{{ tools_list }}"
+
+- name: Insall libreOffice
+  yum:
+    name: libreoffice
+    state: latest

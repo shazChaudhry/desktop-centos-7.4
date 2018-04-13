@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.hostmanager.enabled = true
 	config.hostmanager.manage_host = true
 	config.hostmanager.manage_guest = true
-	# config.vm.provision "docker"
+	config.vm.provision "docker"
 
   config.vm.define "node1", primary: true do |node1|
     node1.vm.hostname = 'node1'
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 8000]
       v.customize ["modifyvm", :id, "--name", "node1"]
     end
-    # node1.vm.provision :shell, inline: $docker_swarm_init
+    node1.vm.provision :shell, inline: $docker_swarm_init
     node1.vm.provision "file", source: "~/.ssh", destination: "$HOME/.ssh"
     node1.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/*"
     node1.vm.provision "file", source: "~/.aws", destination: "$HOME/.aws"

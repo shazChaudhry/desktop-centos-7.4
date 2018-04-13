@@ -1,7 +1,0 @@
----
-# tasks file for atom-packages
-
-- name: Install Atom packages
-  become_user: vagrant
-  apm: name={{ item }} state=latest
-  with_items: "{{ atom_packages }}"

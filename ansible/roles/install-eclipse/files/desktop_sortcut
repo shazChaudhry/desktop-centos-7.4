@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Eclipse 4.7
+Comment=Eclipse Oxygen
+Exec=/usr/bin/eclipse/eclipse
+Icon=/opt/eclipse/icon.xpm
+Categories=Programming
+Version=3.0
+Type=Application
+Terminal=0"
