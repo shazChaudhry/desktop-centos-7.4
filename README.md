@@ -1,3 +1,6 @@
+![CentOS 7 desktop screenshot](./images/centos7-desktop.JPG)
+
+
 `vagrant up` will spin up a CentOS 7.4 desktop VM. This VM is a single node docker swarm mode cluster
 
 _(Optional)_ You will need to ensure that you have an SSH key pair available in ~/.ssh directory. This directory will be coppied to the guest VM
