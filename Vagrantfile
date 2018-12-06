@@ -12,7 +12,6 @@ Vagrant.configure("2") do |config|
   config.hostmanager.enabled = true
 	config.hostmanager.manage_host = true
 	config.hostmanager.manage_guest = true
-	config.vm.provision "docker"
 
   config.vm.define "node1", primary: true do |node1|
     node1.vm.hostname = 'node1'
@@ -21,14 +20,18 @@ Vagrant.configure("2") do |config|
       v.gui = true
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 8000]
-      v.customize ["modifyvm", :id, "--name", "node1"]
+      v.customize ["modifyvm", :id, "--name", "centos7-desktop"]
     end
-    node1.vm.provision :shell, inline: $docker_swarm_init
     node1.vm.provision "file", source: "~/.ssh", destination: "$HOME/.ssh"
-    node1.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/*"
     node1.vm.provision "file", source: "~/.aws", destination: "$HOME/.aws"
-    node1.vm.provision "shell", inline: "chmod 600 /home/vagrant/.aws/*"
-    # node1.vm.provision "shell", inline: "gsettings set org.gnome.nautilus.icon-view default-zoom-level small"
+    node1.vm.provision "shell", inline: <<-SHELL
+      chmod 600 /home/vagrant/.ssh/*
+      chmod 600 /home/vagrant/.aws/*
+      yum update --nogpgcheck --assumeyes
+      sudo -u vagrant dbus-launch gsettings set org.gnome.nautilus.icon-view default-zoom-level small
+    SHELL
+    node1.vm.provision "docker"
+    node1.vm.provision :shell, inline: $docker_swarm_init
     node1.vm.provision "ansible_local" do |ansible|
       ansible.playbook = "ansible/site.yml"
     end

@@ -1,14 +1,14 @@
 `vagrant up` will spin up a CentOS 7.4 desktop VM. This VM is a single node docker swarm mode cluster
 
-You will need to ensure that you have SSH key pair available in ~/.ssh directory. This directory will be coppied to the guest VM
+_(Optional)_ You will need to ensure that you have an SSH key pair available in ~/.ssh directory. This directory will be coppied to the guest VM
 
-You will need to ensure that you have ~/.aws/credentials file available on the host machine. ~/.aws directory will be coppied to the guest VM
+_(Optional)_ You will need to ensure that you have ~/.aws/credentials file available on the host machine. ~/.aws directory will be coppied to the guest VM
 
 The infrastructure created with Vagrantfile will have the following tools installed:
   - Openjdk 1.8
+  - Git _(latest compatible version)_
   - Ansible _(latest compatible version)_
-  - Eclipse Oxygen _(Rel 3)_
-  - Atom _(Beta)_ along with numerous plugins. see Vagrantfile for full list
+  - Atom _(latest Beta)_ along with numerous plugins. See "ansible/roles/install-atom-packages/vars/main.yml"
   - Google Chrome _(latest compatible version)_
-  - Terraform v0.11.5
+  - Terraform v0.11.10
   - Docker CE _(latest compatible version)_
