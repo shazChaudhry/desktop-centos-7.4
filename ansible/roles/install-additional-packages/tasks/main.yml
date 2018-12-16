@@ -1,0 +1,24 @@
+---
+# tasks file for ansible/install-additional-tools
+- name: Install Git and JDK
+  yum:
+    name: "{{ packages }}"
+    state: present
+  tags:
+    - openjdk
+
+- name: Install maven "{{ maven_version }}"
+  unarchive:
+    src: http://mirror.ox.ac.uk/sites/rsync.apache.org/maven/maven-3/{{ maven_version }}/binaries/apache-maven-{{ maven_version }}-bin.zip
+    dest: /opt
+    # owner: "vagrant"
+    # group: "vagrant"
+    mode: u+rx
+    remote_src: yes
+  tags:
+    - maven
+
+- name: Insall libreOffice
+  yum:
+    name: libreoffice
+    state: latest

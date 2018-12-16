@@ -3,9 +3,24 @@
 - hosts: all
   become: yes
   roles:
-    - install-additional-tools
-    - install-terraform
-    - install-google-chrome
-    - install-atom-editor
-    - install-atom-packages
-    # - install-eclipse
+    - role: install-additional-packages
+      tags: ['packages']
+    - role: install-terraform
+      tags: ['terraform']
+    - role: install-google-chrome
+      tags: ['chrome']
+    - role: install-atom-editor
+      tags: ['atom']
+    - role: install-atom-packages
+      tags: ['atom']
+    # - role: install-eclipse
+
+  tasks:
+  - name: Set system path
+    lineinfile:
+      path: /etc/profile
+      state: present
+      regexp: '^PATH'
+      line: 'PATH=/opt/terraform-{{ terraform_version }}:/opt/apache-maven-3.6.0/bin:$PATH'
+    tags:
+      - always

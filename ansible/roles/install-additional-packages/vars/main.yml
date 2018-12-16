@@ -1,7 +1,7 @@
 ---
 # vars file for ansible/install-additional-tools
-tools_list:
+packages:
   - git
-  - java-1.8.0-openjdk
   - java-1.8.0-openjdk-devel
-  - maven
+
+maven_version: 3.6.0
